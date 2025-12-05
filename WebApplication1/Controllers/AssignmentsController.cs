@@ -73,7 +73,7 @@ namespace WebApplication1.Controllers
                 foreach (var error in errors)
                     Debug.WriteLine(error);
 
-                ViewData["ItSupportId"] = new SelectList(_context.ITSupports, "UserId", "Email", assignment.ItSupportId);
+                ViewData["ItSupportId"] = new SelectList(_context.ITSupports, "UserId", "UserName", assignment.ItSupportId);
                 ViewData["TicketId"] = new SelectList(_context.Tickets, "TicketID", "Title", assignment.TicketId);
                 return View(assignment);
             }
@@ -97,7 +97,7 @@ namespace WebApplication1.Controllers
             {
                 return NotFound();
             }
-            ViewData["ItSupportId"] = new SelectList(_context.ITSupports, "UserId", "Email", assignment.ItSupportId);
+            ViewData["ItSupportId"] = new SelectList(_context.ITSupports, "UserId", "UserName", assignment.ItSupportId);
             ViewData["TicketId"] = new SelectList(_context.Tickets, "TicketID", "Title", assignment.TicketId);
             return View(assignment);
         }
@@ -134,7 +134,7 @@ namespace WebApplication1.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ItSupportId"] = new SelectList(_context.ITSupports, "UserId", "Email", assignment.ItSupportId);
+            ViewData["ItSupportId"] = new SelectList(_context.ITSupports, "UserId", "UserName", assignment.ItSupportId);
             ViewData["TicketId"] = new SelectList(_context.Tickets, "TicketID", "Title", assignment.TicketId);
             return View(assignment);
         }

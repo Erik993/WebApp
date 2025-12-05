@@ -52,7 +52,7 @@ namespace WebApplication1.Controllers
         [Authorize]
         public IActionResult Create()
         {
-            ViewData["CreatedById"] = new SelectList(_context.Employees, "UserId", "Email");
+            ViewData["CreatedById"] = new SelectList(_context.Employees, "UserId", "UserName");
 
             //populate with statuses and priorities
             ViewBag.Statuses = new SelectList(Enum.GetValues(typeof(StatusEnum)).Cast<StatusEnum>());
@@ -76,7 +76,7 @@ namespace WebApplication1.Controllers
                     Debug.WriteLine(error);
 
                 // populate fields
-                ViewData["CreatedById"] = new SelectList(_context.Employees, "UserId", "Email", ticket.CreatedById);
+                ViewData["CreatedById"] = new SelectList(_context.Employees, "UserId", "UserName", ticket.CreatedById);
                 ViewBag.Statuses = new SelectList(Enum.GetValues(typeof(StatusEnum)).Cast<StatusEnum>());
                 ViewBag.Priorities = new SelectList(Enum.GetValues(typeof(PriorityEnum)).Cast<PriorityEnum>());
                 return View(ticket);
@@ -103,7 +103,7 @@ namespace WebApplication1.Controllers
             {
                 return NotFound();
             }
-            ViewData["CreatedById"] = new SelectList(_context.Employees, "UserId", "Email", ticket.CreatedById);
+            ViewData["CreatedById"] = new SelectList(_context.Employees, "UserId", "UserName", ticket.CreatedById);
             ViewBag.Statuses = new SelectList(Enum.GetValues(typeof(StatusEnum)).Cast<StatusEnum>());
             ViewBag.Priorities = new SelectList(Enum.GetValues(typeof(PriorityEnum)).Cast<PriorityEnum>());
 
@@ -142,7 +142,7 @@ namespace WebApplication1.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CreatedById"] = new SelectList(_context.Employees, "UserId", "Email", ticket.CreatedById);
+            ViewData["CreatedById"] = new SelectList(_context.Employees, "UserId", "UserName", ticket.CreatedById);
             ViewBag.Statuses = new SelectList(Enum.GetValues(typeof(StatusEnum)).Cast<StatusEnum>());
             ViewBag.Priorities = new SelectList(Enum.GetValues(typeof(PriorityEnum)).Cast<PriorityEnum>());
 
