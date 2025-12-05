@@ -1,0 +1,28 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+    <form asp-controller="TestData" asp-action="CreateEmployees" method="get" style="margin-top:10px;">
+        <input type="number" name="count" value="5" min="1" class="form-control" style="width:100px; display:inline-block;" />
+        <input type="submit" value="Create Test Employees" class="btn btn-primary" />
+    </form>
+
+    <form asp-controller="TestData" asp-action="CreateITSupports" method="get" style="margin-top:10px;">
+        <input type="number" name="count" value="5" min="1" class="form-control" style="width:100px; display:inline-block;" />
+        <input type="submit" value="Create Test IT Support Users" class="btn btn-primary" />
+    </form>
+
+    <form asp-controller="TestData" asp-action="CreateTickets" method="get" style="margin-top:10px;">
+        <input type="number" name="count" value="5" min="1" class="form-control" style="width:100px; display:inline-block;" />
+        <input type="submit" value="Create Test Ticket (at least 1 Employee should exist)" class="btn btn-primary" />
+    </form>
+
+    <form asp-controller="TestData" asp-action="CreateTestAssignments" method="get" style="margin-top:10px;">
+        <input type="number" name="count" value="5" min="1" class="form-control" style="width:100px; display:inline-block;" />
+        <input type="submit" value="Create Test Ticket (at least 1 Employee should exist)" class="btn btn-primary" />
+    </form>
+</div>

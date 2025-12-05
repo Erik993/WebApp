@@ -1,0 +1,53 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+<!--display alert when user tries to add new ticket or assignment-->
+@{
+    //save return ul, like /Assignments/Create or /Tickets/Create
+    var returnUrl = Context.Request.Query["ReturnUrl"].ToString();
+}
+
+@if (!string.IsNullOrEmpty(returnUrl))
+{
+    if (returnUrl == "/Assignments/Create")
+    {
+        <div class="alert alert-danger">
+            Must log in to create new assignments.
+        </div>
+    }
+    else if (returnUrl == "/Tickets/Create")
+    {
+        <div class="alert alert-danger">
+            Must log in to create new tickets.
+        </div>
+    }
+}
+<!------------------------------------------------------------>
+
+
+<ul class="navbar-nav">
+@if (SignInManager.IsSignedIn(User))
+{
+    <li class="nav-item">
+        <a  class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity?.Name!</a>
+    </li>
+    <li class="nav-item">
+        <form  class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+            <button  type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+        </form>
+    </li>
+}
+else
+{
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Register</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
+    </li>
+}
+
+
+</ul>
+
